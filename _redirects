@@ -1,0 +1,17 @@
+# Redirect old wrong domain to correct domain
+https://www.dohacarrepair.qa/* https://doharcarrepairqa.com/:splat 301!
+https://dohacarrepair.qa/* https://doharcarrepairqa.com/:splat 301!
+
+# Redirect www to non-www
+https://www.doharcarrepairqa.com/* https://doharcarrepairqa.com/:splat 301!
+
+# Fix .html extension for clean URLs
+/about https://doharcarrepairqa.com/about.html 301
+/contact https://doharcarrepairqa.com/contact.html 301
+/blog https://doharcarrepairqa.com/blog.html 301
+
+# Duplicate blog posts → canonical URLs
+/blog/ac-repair-doha-qatar-guide.html /blog/ac-repair-doha.html 301
+/blog/engine-repair-doha-qatar.html /blog/engine-repair-doha.html 301
+/blog/buy-damaged-car-doha-qatar.html /blog/buy-damaged-cars-qatar.html 301
+/blog/emergency-car-service-doha-qatar.html /blog/emergency-car-service-qatar.html 301

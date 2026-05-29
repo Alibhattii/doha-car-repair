@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard — Doha Car Repair</title>
+    <!-- Prevent search engines from indexing admin page -->
+    <meta name="robots" content="noindex, nofollow">
+    
+    <!-- Theme Color for Mobile Browsers -->
+    <meta name="theme-color" content="#667eea">
+    <meta name="msapplication-navbutton-color" content="#667eea">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    
+    <link rel="icon" type="image/png" href="Favicon-logo.png">
+    <link rel="apple-touch-icon" href="Favicon-logo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/admin.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="admin-body">
+    <!-- Login Screen -->
+    <div id="loginScreen" class="login-screen">
+        <div class="login-background">
+            <div class="login-particles"></div>
+        </div>
+        <div class="login-container">
+            <div class="login-box">
+                <div class="login-logo">
+                    <img src="Header-logo.png" alt="Doha Car Repair Logo" class="login-logo-img">
+                    <h1>Doha Car Repair</h1>
+                    <p>Admin Dashboard — Secure Access</p>
+                </div>
+                <form id="loginForm">
+                    <div class="form-group">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="adminPassword" placeholder="Enter Password" required autocomplete="off">
+                        <span class="error-message" id="loginError"></span>
+                    </div>
+                    <button type="submit" class="btn-login">
+                        <span>Access Dashboard</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Admin Dashboard -->
+    <div id="adminDashboard" class="admin-dashboard" style="display: none;">
+        <!-- Sidebar -->
+        <aside class="admin-sidebar">
+            <div class="sidebar-header">
+                <div class="sidebar-logo">
+                    <img src="Header-logo.png" alt="Doha Car Repair Logo" class="admin-logo-img">
+                    <h2>Doha Car Repair</h2>
+                </div>
+                <button class="sidebar-toggle" id="sidebarToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="#dashboard" class="nav-item active" data-section="dashboard">
+                    <i class="fas fa-chart-line"></i>
+                    <span>Dashboard</span>
+                </a>
+                <a href="#messages" class="nav-item" data-section="messages">
+                    <i class="fas fa-envelope"></i>
+                    <span>Messages</span>
+                    <span class="nav-badge" id="navBadge">0</span>
+                </a>
+                <a href="#analytics" class="nav-item" data-section="analytics">
+                    <i class="fas fa-chart-pie"></i>
+                    <span>Analytics</span>
+                </a>
+                <a href="#settings" class="nav-item" data-section="settings">
+                    <i class="fas fa-cog"></i>
+                    <span>Settings</span>
+                </a>
+                <a href="https://docs.google.com/spreadsheets/d/1UQa56tqX8Cz59xZC652fPHpRG0_kvTit-F2vEV4E_nc/edit?usp=sharing" target="_blank" class="nav-item nav-sheets" rel="noopener noreferrer">
+                    <i class="fas fa-table"></i>
+                    <span>Google Sheets</span>
+                    <i class="fas fa-external-link-alt" style="font-size:0.7rem; margin-left:auto; opacity:0.7;"></i>
+                </a>
+            </nav>
+            <div class="sidebar-footer">
+                <button id="logoutBtn" class="logout-btn">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Logout</span>
+                </button>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="admin-main">
+            <!-- Header -->
+            <header class="admin-header">
+                <div class="header-left">
+                    <button class="header-hamburger" id="headerHamburger" title="Toggle Sidebar">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <div class="header-logo">
+                        <img src="Header-logo.png" alt="Doha Car Repair Logo" class="header-logo-img">
+                    </div>
+                    <div class="header-title-section">
+                        <h1>Dashboard</h1>
+                    </div>
+                </div>
+                <div class="header-center">
+                    <p id="currentDate" class="header-date"></p>
+                </div>
+                <div class="header-right">
+                    <div class="header-search">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="headerSearch" placeholder="Quick search...">
+                    </div>
+                    <button class="refresh-btn" id="refreshBtn" title="Refresh Data">
+                        <i class="fas fa-sync-alt"></i>
+                    </button>
+                </div>
+            </header>
+
+            <div class="admin-content">
+                <!-- Dashboard Section -->
+                <section id="dashboardSection" class="content-section active">
+                    <!-- Stats Cards -->
+                    <div class="stats-grid">
+                        <div class="stat-card stat-primary">
+                            <div class="stat-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="stat-content">
+                                <h3 id="totalMessages" class="stat-number">0</h3>
+                                <p>Total Contact Forms</p>
+                                <span class="stat-trend">
+                                    <i class="fas fa-arrow-up"></i>
+                                    <span>All time</span>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="stat-card stat-success">
+                            <div class="stat-icon">
+                                <i class="fas fa-calendar-day"></i>
+                            </div>
+                            <div class="stat-content">
+                                <h3 id="todayMessages" class="stat-number">0</h3>
+                                <p>Today's Contact Forms</p>
+                                <span class="stat-trend">
+                                    <i class="fas fa-arrow-up"></i>
+                                    <span>Today</span>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="stat-card stat-warning">
+                            <div class="stat-icon">
+                                <i class="fas fa-exclamation-circle"></i>
+                            </div>
+                            <div class="stat-content">
+                                <h3 id="newMessages" class="stat-number">0</h3>
+                                <p>New Contact Forms</p>
+                                <span class="stat-trend">
+                                    <i class="fas fa-clock"></i>
+                                    <span>Pending</span>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="stat-card stat-info">
+                            <div class="stat-icon">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <div class="stat-content">
+                                <h3 id="doneMessages" class="stat-number">0</h3>
+                                <p>Completed Forms</p>
+                                <span class="stat-trend">
+                                    <i class="fas fa-check"></i>
+                                    <span>Resolved</span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Charts Row -->
+                    <div class="charts-row">
+                        <div class="chart-card">
+                            <div class="chart-header">
+                                <h3>Message Status</h3>
+                                <div class="chart-legend">
+                                    <span class="legend-item"><span class="legend-color" style="background: #667eea;"></span> New</span>
+                                    <span class="legend-item"><span class="legend-color" style="background: #10b981;"></span> Done</span>
+                                </div>
+                            </div>
+                            <div class="chart-container">
+                                <canvas id="statusChart"></canvas>
+                            </div>
+                        </div>
+                        <div class="chart-card">
+                            <div class="chart-header">
+                                <h3>Messages Over Time</h3>
+                            </div>
+                            <div class="chart-container">
+                                <canvas id="timeChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Quick Actions & Recent Activity -->
+                    <div class="actions-row">
+                        <div class="quick-actions-card">
+                            <h3>Quick Actions</h3>
+                            <div class="quick-actions">
+                                <button class="quick-action-btn" onclick="exportToCSV()">
+                                    <i class="fas fa-file-export"></i>
+                                    <span>Export CSV</span>
+                                </button>
+                                <button class="quick-action-btn" onclick="markAllAsRead()">
+                                    <i class="fas fa-check-double"></i>
+                                    <span>Mark All Read</span>
+                                </button>
+                                <button class="quick-action-btn" onclick="refreshData()">
+                                    <i class="fas fa-sync"></i>
+                                    <span>Refresh Data</span>
+                                </button>
+                                <button class="quick-action-btn" onclick="showFilters()">
+                                    <i class="fas fa-filter"></i>
+                                    <span>Advanced Filters</span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="recent-activity-card">
+                            <h3>Recent Activity</h3>
+                            <div class="activity-list" id="activityList">
+                                <div class="activity-item">
+                                    <i class="fas fa-circle activity-dot"></i>
+                                    <div class="activity-content">
+                                        <p>System initialized</p>
+                                        <span>Just now</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Messages Section -->
+                <section id="messagesSection" class="content-section">
+                    <div class="section-header">
+                        <h2>Contact Messages</h2>
+                        <div class="section-actions">
+                            <a href="https://docs.google.com/spreadsheets/d/1p7nQQ6OTaHBKHBZCFIyFpMAAcGpBlbT7XDVe4d5FXNQ/edit" target="_blank" class="action-icon-btn" title="Open Google Sheets" rel="noopener noreferrer" style="background: #10b981; color: white; text-decoration: none;">
+                                <i class="fas fa-table"></i>
+                                <span style="margin-left: 0.5rem; font-size: 0.9rem;">Google Sheets</span>
+                            </a>
+                            <button class="action-icon-btn" onclick="exportToCSV()" title="Export to CSV">
+                                <i class="fas fa-download"></i>
+                            </button>
+                            <button class="action-icon-btn" onclick="refreshData()" title="Refresh">
+                                <i class="fas fa-sync"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Filters -->
+                    <div class="filters-section">
+                        <div class="search-box">
+                            <i class="fas fa-search"></i>
+                            <input type="text" id="searchInput" placeholder="Search by name, email, phone, or message...">
+                            <button id="searchBtn" class="search-btn">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                        <div class="filter-buttons">
+                            <button class="filter-btn active" data-filter="all">
+                                <i class="fas fa-list"></i>
+                                <span>All</span>
+                            </button>
+                            <button class="filter-btn" data-filter="New">
+                                <i class="fas fa-exclamation-circle"></i>
+                                <span>New</span>
+                            </button>
+                            <button class="filter-btn" data-filter="Done">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Done</span>
+                            </button>
+                        </div>
+                        <div class="view-toggle">
+                            <button class="view-btn active" data-view="table" title="Table View">
+                                <i class="fas fa-table"></i>
+                            </button>
+                            <button class="view-btn" data-view="cards" title="Card View">
+                                <i class="fas fa-th-large"></i>
+                            </button>
+                            <a href="https://docs.google.com/spreadsheets/d/1UQa56tqX8Cz59xZC652fPHpRG0_kvTit-F2vEV4E_nc/edit?usp=sharing" target="_blank" class="view-btn" title="Open Google Sheets" rel="noopener noreferrer" style="background: #10b981; color: white; text-decoration: none; margin-left: 0.5rem;">
+                                <i class="fas fa-table"></i>
+                                <span style="margin-left: 0.5rem;">Sheets</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Messages Table View -->
+                    <div class="messages-section table-view" id="tableView">
+                        <div class="table-container">
+                            <table class="messages-table">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            <input type="checkbox" id="selectAll">
+                                        </th>
+                                        <th>Timestamp</th>
+                                        <th>Name</th>
+                                        <th>Email</th>
+                                        <th>Phone</th>
+                                        <th>Subject</th>
+                                        <th>Message</th>
+                                        <th>Status</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="messagesTableBody">
+                                    <tr>
+                                        <td colspan="9" class="loading">
+                                            <i class="fas fa-spinner fa-spin"></i>
+                                            <span>Loading messages...</span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="pagination" id="pagination"></div>
+                    </div>
+
+                    <!-- Messages Card View -->
+                    <div class="messages-section card-view" id="cardView" style="display: none;">
+                        <div class="messages-grid" id="messagesGrid">
+                            <!-- Cards will be inserted here -->
+                        </div>
+                        <div class="pagination" id="paginationCards"></div>
+                    </div>
+                </section>
+
+                <!-- Analytics Section -->
+                <section id="analyticsSection" class="content-section">
+                    <div class="section-header">
+                        <h2>Analytics & Reports</h2>
+                    </div>
+                    <div class="analytics-grid">
+                        <div class="analytics-card">
+                            <h3>Response Time</h3>
+                            <div class="analytics-value">
+                                <span id="avgResponseTime">--</span>
+                                <small>Average hours</small>
+                            </div>
+                        </div>
+                        <div class="analytics-card">
+                            <h3>Completion Rate</h3>
+                            <div class="analytics-value">
+                                <span id="completionRate">--</span>
+                                <small>%</small>
+                            </div>
+                        </div>
+                        <div class="analytics-card">
+                            <h3>Top Service</h3>
+                            <div class="analytics-value">
+                                <span id="topService">--</span>
+                                <small>Most requested</small>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Settings Section -->
+                <section id="settingsSection" class="content-section">
+                    <div class="section-header">
+                        <h2>Settings</h2>
+                    </div>
+                    <div class="settings-grid">
+                        <div class="settings-card">
+                            <h3>General Settings</h3>
+                            <div class="setting-item">
+                                <label>Messages per page</label>
+                                <select id="messagesPerPage">
+                                    <option value="10">10</option>
+                                    <option value="25">25</option>
+                                    <option value="50">50</option>
+                                    <option value="100">100</option>
+                                </select>
+                            </div>
+                            <div class="setting-item">
+                                <label>Auto-refresh interval</label>
+                                <select id="autoRefresh">
+                                    <option value="0">Disabled</option>
+                                    <option value="30">30 seconds</option>
+                                    <option value="60">1 minute</option>
+                                    <option value="300">5 minutes</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="settings-card">
+                            <h3>Quick Links</h3>
+                            <div class="setting-item">
+                                <a href="https://doharcarrepairqa.com" target="_blank" rel="noopener noreferrer" style="color: #667eea; text-decoration: none; font-weight: 500;">
+                                    <i class="fas fa-globe" style="margin-right: 0.5rem;"></i>Visit Website
+                                </a>
+                            </div>
+                            <div class="setting-item">
+                                <a href="https://docs.google.com/spreadsheets/d/1p7nQQ6OTaHBKHBZCFIyFpMAAcGpBlbT7XDVe4d5FXNQ/edit" target="_blank" rel="noopener noreferrer" style="color: #10b981; text-decoration: none; font-weight: 500;">
+                                    <i class="fas fa-table" style="margin-right: 0.5rem;"></i>Open Google Sheets
+                                </a>
+                            </div>
+                            <div class="setting-item">
+                                <a href="https://search.google.com/search-console" target="_blank" rel="noopener noreferrer" style="color: #f59e0b; text-decoration: none; font-weight: 500;">
+                                    <i class="fas fa-chart-bar" style="margin-right: 0.5rem;"></i>Google Search Console
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <script src="js/admin.js"></script>
+</body>
+</html>
+
