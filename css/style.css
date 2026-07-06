@@ -1,5 +1,5 @@
 /* ============================================
-   Doha Car Repair - Main Stylesheet
+   Dohar Car Repair - Main Stylesheet
    Fully Responsive & Optimized
    ============================================ */
 
@@ -14,7 +14,7 @@
 
 :root {
     --primary-color: #3b82f6;
-    --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --primary-gradient: linear-gradient(135deg, #e63946 0%, #c0392b 100%);
     --secondary-color: #1e40af;
     --accent-color: #f59e0b;
     --accent-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
@@ -22,7 +22,7 @@
     --text-light: #6b7280;
     --bg-light: #f9fafb;
     --bg-white: #ffffff;
-    --bg-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+    --bg-gradient: linear-gradient(135deg, #e63946 0%, #c0392b 50%, #f093fb 100%);
     --border-color: #e5e7eb;
     --success-color: #10b981;
     --error-color: #ef4444;
@@ -30,8 +30,8 @@
     --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
     --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
     --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
-    --shadow-glow: 0 0 20px rgba(102, 126, 234, 0.4);
-    --shadow-glow-lg: 0 0 40px rgba(102, 126, 234, 0.6);
+    --shadow-glow: 0 0 20px rgba(230, 57, 70, 0.4);
+    --shadow-glow-lg: 0 0 40px rgba(230, 57, 70, 0.6);
     --glass-bg: rgba(255, 255, 255, 0.1);
     --glass-border: rgba(255, 255, 255, 0.2);
 }
@@ -94,8 +94,8 @@ body::before {
     width: 100%;
     height: 100%;
     background: 
-        radial-gradient(circle at 20% 50%, rgba(102, 126, 234, 0.1) 0%, transparent 50%),
-        radial-gradient(circle at 80% 80%, rgba(118, 75, 162, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 20% 50%, rgba(230, 57, 70, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(192, 57, 43, 0.1) 0%, transparent 50%),
         radial-gradient(circle at 40% 20%, rgba(240, 147, 251, 0.1) 0%, transparent 50%);
     pointer-events: none;
     z-index: 0;
@@ -235,7 +235,7 @@ body > * {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+    background: linear-gradient(135deg, #e63946 0%, #c0392b 50%, #f093fb 100%);
     background-image: url('https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?w=1920');
     background-size: cover;
     background-position: center;
@@ -348,12 +348,12 @@ body > * {
 .btn-primary {
     background: var(--primary-gradient);
     color: white;
-    box-shadow: 0 4px 20px rgba(102, 126, 234, 0.4);
+    box-shadow: 0 4px 20px rgba(230, 57, 70, 0.4);
 }
 
 .btn-primary:hover {
     transform: translateY(-3px) scale(1.03);
-    box-shadow: 0 8px 30px rgba(102, 126, 234, 0.6);
+    box-shadow: 0 8px 30px rgba(230, 57, 70, 0.6);
 }
 
 .btn-secondary {
@@ -439,14 +439,14 @@ section {
 
 /* Service Card Background Images - Improved Visibility */
 .service-card[data-service="Car Repair Service"] {
-    background-image: linear-gradient(135deg, rgba(102, 126, 234, 0.15), rgba(30, 30, 30, 0.3)), 
+    background-image: linear-gradient(135deg, rgba(230, 57, 70, 0.15), rgba(30, 30, 30, 0.3)), 
                       url('https://images.unsplash.com/photo-1625047509248-ec889cbff17f?w=800&q=75');
     background-size: cover;
     background-position: center;
 }
 
 .service-card[data-service="Engine Repair"] {
-    background-image: linear-gradient(135deg, rgba(118, 75, 162, 0.15), rgba(30, 30, 30, 0.3)),
+    background-image: linear-gradient(135deg, rgba(192, 57, 43, 0.15), rgba(30, 30, 30, 0.3)),
                       url('https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?w=800&q=75');
     background-size: cover;
     background-position: center;
@@ -502,7 +502,7 @@ section {
 }
 
 .service-card[data-service="Steering Box Repair"] {
-    background-image: linear-gradient(135deg, rgba(102, 126, 234, 0.15), rgba(30, 30, 30, 0.3)),
+    background-image: linear-gradient(135deg, rgba(230, 57, 70, 0.15), rgba(30, 30, 30, 0.3)),
                       url('https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=800&q=75');
     background-size: cover;
     background-position: center;
@@ -653,7 +653,7 @@ section {
 
 .team-card:hover {
     transform: translateY(-8px);
-    box-shadow: 0 15px 40px rgba(102, 126, 234, 0.2);
+    box-shadow: 0 15px 40px rgba(230, 57, 70, 0.2);
 }
 
 .team-image {
@@ -730,14 +730,14 @@ section {
     top: -10px;
     left: 20px;
     font-size: 80px;
-    color: rgba(102, 126, 234, 0.1);
+    color: rgba(230, 57, 70, 0.1);
     font-family: serif;
     line-height: 1;
 }
 
 .testimonial-card:hover {
     transform: translateY(-8px);
-    box-shadow: 0 15px 40px rgba(102, 126, 234, 0.2);
+    box-shadow: 0 15px 40px rgba(230, 57, 70, 0.2);
 }
 
 .testimonial-image {
@@ -775,7 +775,7 @@ section {
 
 /* CTA Section */
 .cta {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+    background: linear-gradient(135deg, #e63946 0%, #c0392b 50%, #f093fb 100%);
     background-size: 200% 200%;
     animation: gradientShift 5s ease infinite;
     color: white;
@@ -928,7 +928,7 @@ section {
     opacity: 0;
     visibility: hidden;
     transition: all 0.4s ease;
-    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+    box-shadow: 0 4px 15px rgba(230, 57, 70, 0.4);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -941,7 +941,7 @@ section {
 
 .back-to-top:hover {
     transform: translateY(-5px) scale(1.1);
-    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.6);
+    box-shadow: 0 8px 25px rgba(230, 57, 70, 0.6);
 }
 
 /* WhatsApp Float Button */
@@ -977,7 +977,7 @@ section {
 
 /* Page Header */
 .page-header {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+    background: linear-gradient(135deg, #e63946 0%, #c0392b 50%, #f093fb 100%);
     background-size: 200% 200%;
     animation: gradientShift 5s ease infinite;
     color: white;
@@ -1052,7 +1052,7 @@ section {
 
 .stat-card:hover {
     transform: translateY(-8px);
-    box-shadow: 0 15px 40px rgba(102, 126, 234, 0.2);
+    box-shadow: 0 15px 40px rgba(230, 57, 70, 0.2);
 }
 
 .stat-number {
@@ -1133,7 +1133,7 @@ section {
 
 /* Feature Card Background Images */
 .feature-card:nth-child(1) {
-    background-image: linear-gradient(135deg, rgba(102, 126, 234, 0.92), rgba(118, 75, 162, 0.88)), 
+    background-image: linear-gradient(135deg, rgba(230, 57, 70, 0.92), rgba(192, 57, 43, 0.88)), 
                       url('https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?w=500&q=80');
 }
 
@@ -1396,12 +1396,12 @@ section {
     justify-content: center;
     flex-shrink: 0;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+    box-shadow: 0 4px 15px rgba(230, 57, 70, 0.3);
 }
 
 .contact-info-item:hover .contact-icon {
     transform: scale(1.1);
-    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.5);
+    box-shadow: 0 6px 20px rgba(230, 57, 70, 0.5);
 }
 
 .contact-icon i {
@@ -1452,7 +1452,7 @@ section {
 
 .blog-card:hover {
     transform: translateY(-8px);
-    box-shadow: 0 15px 40px rgba(102, 126, 234, 0.2);
+    box-shadow: 0 15px 40px rgba(230, 57, 70, 0.2);
 }
 
 .blog-image {
@@ -1899,8 +1899,182 @@ section {
     }
 }
 
+/* Promo Bar */
+.promo-bar {
+    background: #e63946;
+    color: #ffffff;
+    text-align: center;
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: 600;
+    position: relative;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+}
+
+.promo-bar a {
+    color: #fff;
+    text-decoration: underline;
+    font-weight: 700;
+}
+
+.promo-close {
+    background: transparent;
+    border: none;
+    color: #fff;
+    font-size: 18px;
+    cursor: pointer;
+    margin-left: 16px;
+    line-height: 1;
+}
+
+/* Offer Badge */
+.offer-badge {
+    display: inline-block;
+    background: #fff;
+    color: #e63946;
+    font-weight: 800;
+    font-size: 13px;
+    padding: 6px 16px;
+    border-radius: 20px;
+    margin-bottom: 16px;
+    letter-spacing: 0.5px;
+}
+
+/* Breadcrumb */
+.breadcrumb {
+    font-size: 13px;
+    color: #888;
+    padding: 10px 0;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.breadcrumb a {
+    color: #aaa;
+    text-decoration: none;
+}
+
+.breadcrumb a:hover {
+    color: #e63946;
+}
+
+.breadcrumb-sep {
+    margin: 0 6px;
+}
+
+.breadcrumb-current {
+    color: #888;
+}
+
+/* Testimonial Avatar */
+.testimonial-avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: #c0392b;
+    color: #fff;
+    font-size: 22px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 12px auto;
+}
+
+/* Read Guide Link */
+.read-guide-link {
+    font-size: 13px;
+    color: #aaaaaa;
+    display: block;
+    margin-top: 8px;
+    text-decoration: none;
+    position: relative;
+    z-index: 2;
+}
+
+.read-guide-link:hover {
+    color: #ffcc00;
+    text-decoration: underline;
+}
+
+.service-card-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.service-card-wrap .service-card {
+    width: 100%;
+}
+
+.service-card-wrap .read-guide-link {
+    margin-top: -4px;
+    padding-bottom: 8px;
+}
+
+/* Citation Links */
+.citation-links {
+    font-size: 11px;
+    color: #666;
+    text-align: center;
+    padding: 8px 0;
+}
+
+.citation-links a {
+    color: #888;
+    text-decoration: none;
+}
+
+.citation-links a:hover {
+    color: #e63946;
+    text-decoration: underline;
+}
+
+/* Trust Badges */
+.trust-badges {
+    text-align: center;
+    padding: 40px 20px;
+    background: var(--bg-light);
+}
+
+.trust-badges h3 {
+    font-size: 1.5rem;
+    color: var(--text-dark);
+    margin-bottom: 0;
+}
+
+.badge-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 12px;
+}
+
+.badge-links a {
+    color: #888;
+    font-size: 13px;
+    border: 1px solid #ddd;
+    padding: 6px 14px;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+.badge-links a:hover {
+    color: #e63946;
+    border-color: #e63946;
+}
+
 /* Print Styles */
 @media print {
+    .promo-bar,
     .navbar,
     .whatsapp-float,
     .back-to-top,

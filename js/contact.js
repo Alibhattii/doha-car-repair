@@ -1,14 +1,13 @@
 // ============================================
 // Contact Form Handler
-// Google Sheets Integration
+// Google Sheets + WhatsApp redirect
 // ============================================
 
-// Replace with your Google Apps Script Web App URL
 const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzs4OnEysblPX516uqJHKVHHwgxoQ-DHZ_AjE8xobs0JwSpTEra9txawqiqs1KLDF6oIg/exec';
+const WHATSAPP_NUMBER = '97472223959';
 
 document.addEventListener('DOMContentLoaded', function() {
     const contactForm = document.getElementById('contactForm');
-    const formSuccess = document.getElementById('formSuccess');
     const btnText = document.querySelector('.btn-text');
     const btnLoader = document.querySelector('.btn-loader');
 
@@ -16,37 +15,29 @@ document.addEventListener('DOMContentLoaded', function() {
         contactForm.addEventListener('submit', async function(e) {
             e.preventDefault();
 
-            // Get form data
             const formData = {
                 name: document.getElementById('name').value.trim(),
                 email: document.getElementById('email').value.trim(),
-                phone: document.getElementById('phone').value.trim() || '',
+                phone: document.getElementById('phone').value.trim() || 'Not provided',
                 subject: document.getElementById('subject').value,
                 message: document.getElementById('message').value.trim()
             };
 
-            // Validate form
             if (!validateForm(formData)) {
                 return;
             }
 
-            // Show loading state
             const submitBtn = contactForm.querySelector('button[type="submit"]');
             submitBtn.disabled = true;
             btnText.style.display = 'none';
             btnLoader.style.display = 'inline-block';
 
-            try {
-                // Send to Google Sheets using form submission method
-                // This works better with Google Apps Script
-                const form = new FormData();
-                form.append('name', formData.name);
-                form.append('email', formData.email);
-                form.append('subject', formData.subject);
-                form.append('message', formData.message);
+            // Open WhatsApp tab now (same click) so popup blockers don't block it
+            const whatsappUrl = buildWhatsAppUrl(formData);
+            const whatsappWindow = window.open(whatsappUrl, '_blank');
 
-                // Alternative: Use fetch with JSON (requires CORS setup in Apps Script)
-                const response = await fetch(GOOGLE_SCRIPT_URL, {
+            try {
+                await fetch(GOOGLE_SCRIPT_URL, {
                     method: 'POST',
                     mode: 'no-cors',
                     headers: {
@@ -59,29 +50,22 @@ document.addEventListener('DOMContentLoaded', function() {
                     })
                 });
 
-                // Since no-cors doesn't return response, we assume success
-                // The data is still sent to Google Sheets
-                setTimeout(() => {
-                    showSuccess();
-                    contactForm.reset();
-                    submitBtn.disabled = false;
-                    btnText.style.display = 'inline';
-                    btnLoader.style.display = 'none';
-                }, 1000);
+                showSuccess(formData, whatsappWindow, whatsappUrl);
+                contactForm.reset();
 
             } catch (error) {
                 console.error('Error:', error);
-                // Still show success as the form might have been submitted
-                // In production, consider adding a fallback mechanism
-                showSuccess();
-                contactForm.reset();
+                if (whatsappWindow && !whatsappWindow.closed) {
+                    whatsappWindow.close();
+                }
+                showFormError('Something went wrong saving your message. Please try again or call us at +974 7222 3959.');
+            } finally {
                 submitBtn.disabled = false;
                 btnText.style.display = 'inline';
                 btnLoader.style.display = 'none';
             }
         });
 
-        // Real-time validation
         const inputs = contactForm.querySelectorAll('input, select, textarea');
         inputs.forEach(input => {
             input.addEventListener('blur', function() {
@@ -91,10 +75,19 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
+function buildWhatsAppUrl(formData) {
+    const message = `Hello Dohar Car Repair! 👋
+Name: ${formData.name}
+Phone: ${formData.phone}
+Email: ${formData.email}
+Service: ${formData.subject}
+Details: ${formData.message}`;
+    return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+}
+
 function validateForm(data) {
     let isValid = true;
 
-    // Validate name
     if (!data.name || data.name.length < 2) {
         showError('name', 'Name must be at least 2 characters');
         isValid = false;
@@ -102,7 +95,6 @@ function validateForm(data) {
         clearError('name');
     }
 
-    // Validate email
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!data.email || !emailRegex.test(data.email)) {
         showError('email', 'Please enter a valid email address');
@@ -111,7 +103,6 @@ function validateForm(data) {
         clearError('email');
     }
 
-    // Validate subject
     if (!data.subject) {
         showError('subject', 'Please select a service');
         isValid = false;
@@ -119,7 +110,6 @@ function validateForm(data) {
         clearError('subject');
     }
 
-    // Validate message
     if (!data.message || data.message.length < 10) {
         showError('message', 'Message must be at least 10 characters');
         isValid = false;
@@ -183,14 +173,42 @@ function clearError(fieldName) {
     }
 }
 
-function showSuccess() {
+function showFormError(message) {
+    const contactForm = document.getElementById('contactForm');
+    let errorEl = document.getElementById('formError');
+    if (!errorEl && contactForm) {
+        errorEl = document.createElement('div');
+        errorEl.id = 'formError';
+        errorEl.style.cssText = 'background:#fef2f2;color:#ef4444;padding:1rem;border-radius:8px;margin-bottom:1rem;text-align:center;';
+        contactForm.parentNode.insertBefore(errorEl, contactForm);
+    }
+    if (errorEl) {
+        errorEl.textContent = message;
+        errorEl.style.display = 'block';
+    }
+}
+
+function showSuccess(formData, whatsappWindow, whatsappUrl) {
     const contactForm = document.getElementById('contactForm');
     const formSuccess = document.getElementById('formSuccess');
-    
+    const formError = document.getElementById('formError');
+
+    if (formError) {
+        formError.style.display = 'none';
+    }
+
     if (contactForm && formSuccess) {
         contactForm.style.display = 'none';
         formSuccess.style.display = 'block';
         formSuccess.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }
-}
 
+    // Fallback if popup was blocked — user can tap the link on success screen
+    if (!whatsappWindow || whatsappWindow.closed) {
+        const fallback = document.getElementById('whatsappFallback');
+        if (fallback) {
+            fallback.href = whatsappUrl;
+            fallback.style.display = 'inline-flex';
+        }
+    }
+}

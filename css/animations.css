@@ -114,20 +114,20 @@
 @keyframes pulse {
     0%, 100% {
         transform: scale(1);
-        box-shadow: 0 0 0 0 rgba(102, 126, 234, 0.7);
+        box-shadow: 0 0 0 0 rgba(230, 57, 70, 0.7);
     }
     50% {
         transform: scale(1.05);
-        box-shadow: 0 0 0 10px rgba(102, 126, 234, 0);
+        box-shadow: 0 0 0 10px rgba(230, 57, 70, 0);
     }
 }
 
 @keyframes pulseGlow {
     0%, 100% {
-        box-shadow: 0 0 20px rgba(102, 126, 234, 0.4);
+        box-shadow: 0 0 20px rgba(230, 57, 70, 0.4);
     }
     50% {
-        box-shadow: 0 0 40px rgba(102, 126, 234, 0.8);
+        box-shadow: 0 0 40px rgba(230, 57, 70, 0.8);
     }
 }
 
@@ -326,7 +326,7 @@
     width: 500px;
     height: 500px;
     border-radius: 50%;
-    background: linear-gradient(135deg, rgba(102, 126, 234, 0.3), rgba(118, 75, 162, 0.3));
+    background: linear-gradient(135deg, rgba(230, 57, 70, 0.3), rgba(192, 57, 43, 0.3));
     filter: blur(80px);
     animation: morph 8s ease-in-out infinite;
 }
@@ -423,10 +423,10 @@ section.revealed {
     left: 0;
     width: 0%;
     height: 4px;
-    background: linear-gradient(90deg, #667eea, #764ba2, #f093fb);
+    background: linear-gradient(90deg, #e63946, #c0392b, #1a0a0b);
     z-index: 10000;
     transition: width 0.1s ease;
-    box-shadow: 0 0 10px rgba(102, 126, 234, 0.5);
+    box-shadow: 0 0 10px rgba(230, 57, 70, 0.5);
 }
 
 /* Neon Glow Effect */

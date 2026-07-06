@@ -67,7 +67,7 @@ function handleFormSubmission(data) {
   
   // Add headers if sheet is empty
   if (sheet.getLastRow() === 0) {
-    sheet.appendRow(['Timestamp', 'Name', 'Email', 'Subject', 'Message', 'Status']);
+    sheet.appendRow(['Timestamp', 'Name', 'Email', 'Phone', 'Subject', 'Message', 'Status']);
   }
   
   // Add new row
@@ -76,6 +76,7 @@ function handleFormSubmission(data) {
     timestamp,
     data.name || '',
     data.email || '',
+    data.phone || '',
     data.subject || '',
     data.message || '',
     'New'
@@ -114,9 +115,10 @@ function getMessages() {
       timestamp: row[0] ? new Date(row[0]).toISOString() : '',
       name: row[1] || '',
       email: row[2] || '',
-      subject: row[3] || '',
-      message: row[4] || '',
-      status: row[5] || 'New'
+      phone: row[3] || '',
+      subject: row[4] || '',
+      message: row[5] || '',
+      status: row[6] || 'New'
     });
   }
   
@@ -138,7 +140,7 @@ function updateStatus(data) {
     const rowTimestamp = dataRange[i][0];
     if (rowTimestamp && new Date(rowTimestamp).toISOString() === data.timestamp) {
       // Update status in column 6 (index 5)
-      sheet.getRange(i + 1, 6).setValue(data.status);
+      sheet.getRange(i + 1, 7).setValue(data.status);
       break;
     }
   }
@@ -181,9 +183,9 @@ function getOrCreateSheet() {
   
   if (!sheet) {
     sheet = spreadsheet.insertSheet(SHEET_NAME);
-    sheet.appendRow(['Timestamp', 'Name', 'Email', 'Subject', 'Message', 'Status']);
+    sheet.appendRow(['Timestamp', 'Name', 'Email', 'Phone', 'Subject', 'Message', 'Status']);
     // Format header row
-    const headerRange = sheet.getRange(1, 1, 1, 6);
+    const headerRange = sheet.getRange(1, 1, 1, 7);
     headerRange.setFontWeight('bold');
     headerRange.setBackground('#4285f4');
     headerRange.setFontColor('#ffffff');
@@ -203,6 +205,7 @@ New contact form submission received:
 
 Name: ${data.name || 'N/A'}
 Email: ${data.email || 'N/A'}
+Phone: ${data.phone || 'N/A'}
 Subject: ${data.subject || 'N/A'}
 Message: ${data.message || 'N/A'}
 Timestamp: ${timestamp}

@@ -1,5 +1,5 @@
 // ============================================
-// Admin Panel JavaScript - Doha Car Repair
+// Admin Panel JavaScript - Dohar Car Repair
 // Fixed Version — All Bugs Resolved
 // ============================================
 

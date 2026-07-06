@@ -4,13 +4,8 @@
 
 document.addEventListener('DOMContentLoaded', function() {
     const statNumbers = document.querySelectorAll('.stat-number');
-    
-    if (statNumbers.length > 0) {
-        const observerOptions = {
-            threshold: 0.5,
-            rootMargin: '0px'
-        };
 
+    if (statNumbers.length > 0) {
         const counterObserver = new IntersectionObserver(function(entries) {
             entries.forEach(entry => {
                 if (entry.isIntersecting && !entry.target.classList.contains('counted')) {
@@ -19,7 +14,10 @@ document.addEventListener('DOMContentLoaded', function() {
                     counterObserver.unobserve(entry.target);
                 }
             });
-        }, observerOptions);
+        }, {
+            threshold: 0.5,
+            rootMargin: '0px'
+        });
 
         statNumbers.forEach(stat => {
             counterObserver.observe(stat);
@@ -28,21 +26,22 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function animateCounter(element) {
-    const target = parseInt(element.getAttribute('data-target'));
-    const duration = 2000; // 2 seconds
-    const increment = target / (duration / 16); // 60fps
-    let current = 0;
+    const target = parseInt(element.getAttribute('data-target'), 10);
+    const duration = 2000;
+    const startTime = performance.now();
 
-    const updateCounter = () => {
-        current += increment;
-        if (current < target) {
-            element.textContent = Math.floor(current).toLocaleString();
+    function updateCounter(currentTime) {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        const current = Math.floor(progress * target);
+
+        if (progress < 1) {
+            element.textContent = current.toLocaleString();
             requestAnimationFrame(updateCounter);
         } else {
-            element.textContent = target.toLocaleString();
+            element.textContent = target.toLocaleString() + '+';
         }
-    };
+    }
 
-    updateCounter();
+    requestAnimationFrame(updateCounter);
 }
-
