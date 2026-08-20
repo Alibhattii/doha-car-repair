@@ -44,13 +44,13 @@ function smoothScrollTo(target, duration = 1000) {
     requestAnimationFrame(animation);
 }
 
-// Optimized Intersection Observer
-const observerOptions = {
+// Optimized Intersection Observer (scoped names avoid clashes with animations.js)
+const smoothObserverOptions = {
     threshold: 0.1,
     rootMargin: '0px 0px -50px 0px'
 };
 
-const animationObserver = new IntersectionObserver((entries) => {
+const smoothAnimationObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
             entry.target.classList.add('animated');
@@ -64,12 +64,12 @@ const animationObserver = new IntersectionObserver((entries) => {
             });
         }
     });
-}, observerOptions);
+}, smoothObserverOptions);
 
 // Observe all animated elements
 document.addEventListener('DOMContentLoaded', function() {
     document.querySelectorAll('[data-animate]').forEach(el => {
-        animationObserver.observe(el);
+        smoothAnimationObserver.observe(el);
     });
 });
 

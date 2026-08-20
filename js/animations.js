@@ -4,14 +4,8 @@
 // ============================================
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Create scroll progress indicator
-    createScrollProgress();
-    
-    // Create particle effects for hero
+    // Scroll progress + magnetic effects live in smooth-animations.js (avoid duplicates)
     createParticles();
-    
-    // Add magnetic effect to buttons
-    addMagneticEffect();
     
     // Parallax effect is now handled in smooth-animations.js with reduced effect
     // addParallaxEffect(); // Disabled to prevent text disappearing
@@ -167,13 +161,13 @@ style.textContent = `
 `;
 document.head.appendChild(style);
 
-// Intersection Observer for advanced animations
-const observerOptions = {
+// Intersection Observer for advanced animations (unique names avoid script clashes)
+const advancedObserverOptions = {
     threshold: 0.1,
     rootMargin: '0px 0px -100px 0px'
 };
 
-const animationObserver = new IntersectionObserver(function(entries) {
+const advancedAnimationObserver = new IntersectionObserver(function(entries) {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
             entry.target.classList.add('animated');
@@ -188,11 +182,11 @@ const animationObserver = new IntersectionObserver(function(entries) {
             });
         }
     });
-}, observerOptions);
+}, advancedObserverOptions);
 
 // Observe all animated elements
 document.querySelectorAll('[data-animate]').forEach(el => {
-    animationObserver.observe(el);
+    advancedAnimationObserver.observe(el);
 });
 
 // Add glow effect on scroll - Reduced effect
