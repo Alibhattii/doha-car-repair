@@ -1,212 +1,108 @@
-# Ali - Scrap, Damaged & Junk Car Services Website
+# Dohar Car Repair — Website
 
-A professional, modern, SEO-optimized business website for Ali car services in Qatar.
+Business website for Dohar Car Repair, a car repair, maintenance and
+scrap/damaged car buying service in Doha, Qatar.
 
-## 🚀 Features
+Live: https://doharcarrepairqa.com/
 
-- **4 Main Pages**: Home, About Us, Contact, Blog
-- **Admin Panel**: Password-protected dashboard for managing contact messages
-- **Google Sheets Integration**: Contact form data stored in Google Sheets
-- **Responsive Design**: Mobile-first, works on all devices
-- **Modern Animations**: Smooth scroll-based animations
-- **SEO Optimized**: Proper meta tags, semantic HTML
-- **WhatsApp Integration**: Floating button on all pages
-
-## 📁 Project Structure
+## Project structure
 
 ```
-├── index.html              # Home page
-├── about.html              # About Us page
-├── contact.html            # Contact page
-├── blog.html               # Blog page
-├── admin.html              # Admin panel (password protected)
+├── index.html, about.html, contact.html, blog.html   # main pages
+├── privacy.html, terms.html                          # legal pages
+├── blog/                                              # 25 individual guide/service posts
 ├── css/
-│   ├── style.css          # Main stylesheet
-│   ├── animations.css     # Animation styles
-│   └── admin.css          # Admin panel styles
+│   ├── style.css          # layout, components, colors, responsive rules
+│   └── animations.css     # scroll-reveal + reduced-motion rules
 ├── js/
-│   ├── main.js            # Main JavaScript (navigation, animations)
-│   ├── sliders.js         # Team & testimonials sliders
-│   ├── contact.js         # Contact form handler
-│   ├── counters.js        # Animated counters
-│   └── admin.js           # Admin panel functionality
-├── google-apps-script.js   # Google Apps Script backend code
-└── README.md              # This file
+│   ├── main.js              # nav, mobile menu, promo bar, navbar/back-to-top scroll state
+│   ├── smooth-animations.js # scroll-reveal observer, parallax, back-to-top, page transitions
+│   ├── animations.js        # button ripple micro-interaction only
+│   ├── sliders.js           # testimonials/team horizontal sliders
+│   ├── contact.js           # contact form validation + submission
+│   ├── counters.js          # animated stat counters (About page)
+│   ├── faq.js               # FAQ accordion
+│   └── service-navigation.js
+├── Image/                  # WebP images (logos, hero photos, blog images)
+├── google-apps-script.js   # backend for the contact form (Google Apps Script)
+├── sitemap.xml, robots.txt, ads.txt
+└── CNAME, _headers
 ```
 
-## 🛠️ Setup Instructions
+There is no build step — this is a static, framework-free site. Edit the
+HTML/CSS/JS directly and deploy the folder as-is.
 
-### 1. Google Sheets Setup
+## ⚠️ Action required: redeploy the Apps Script backend
 
-1. Create a new Google Sheet
-2. Name it "ContactMessages" (or update `SHEET_NAME` in the script)
-3. The script will automatically create columns: Timestamp, Name, Email, Subject, Message, Status
+`google-apps-script.js` was rewritten to remove the public `getMessages`,
+`updateStatus` and `deleteMessage` actions that the old `admin.html` used —
+those had **no authentication**, so anyone who found the deployed URL could
+read or delete every customer's name, email and phone number. `admin.html`,
+`js/admin.js` and `css/admin.css` have been deleted from the site for the
+same reason (the old admin password was visible in the page source).
 
-### 2. Google Apps Script Setup
+**This file being fixed in the repo does not fix the live backend.** To
+close the security hole, copy the current contents of
+`google-apps-script.js` into your Apps Script project (Extensions → Apps
+Script, from the linked Google Sheet) and redeploy the web app. Until you
+do that, the old deployed version — with the old open endpoints — is still
+live at whatever URL was hardcoded in the previous `admin.js` (now removed
+from this repo, but the deployment itself isn't affected by deleting a
+file here).
 
-1. Open [Google Apps Script](https://script.google.com/)
-2. Create a new project
-3. Copy the contents of `google-apps-script.js` into the script editor
-4. Update the configuration:
-   - `SHEET_NAME`: Your Google Sheet name
-   - `ADMIN_EMAIL`: Your email address for notifications
-5. Save the project
-6. Deploy as Web App:
-   - Click "Deploy" > "New deployment"
-   - Choose "Web app" as type
-   - Set "Execute as" to "Me"
-   - Set "Who has access" to "Anyone"
-   - Click "Deploy"
-   - Copy the Web App URL
+Going forward, review and manage leads directly in the Google Sheet the
+form writes to — there is no admin panel anymore.
 
-### 3. Update Website URLs
+## What changed in this pass
 
-1. Open `js/contact.js`
-2. Replace `YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE` with your Web App URL
+- **Security:** removed the public admin panel and hardened the Apps
+  Script backend (see above — requires redeployment).
+- **Ads:** removed AdSense entirely (script, meta tag, `ads.txt`).
+- **Layout:** the promo banner no longer covers the logo/menu — it and the
+  navbar are now one sticky header, so they never overlap regardless of
+  screen width or how many lines the banner wraps to.
+- **Broken content:** fixed 10 broken blog images (pointed at existing
+  photos), 2 wrong file extensions, and a live "Our Expert Team" section
+  on the homepage that showed placeholder.com images and invented staff
+  names (now commented out — re-enable with real photos/names when ready).
+- **Images:** swapped 29 PNGs for their existing WebP versions, removed
+  33 unused image files (`Image/` folder: 21 MB → 3.6 MB), added
+  width/height + lazy loading to blog images, fixed the broken
+  `og:image` link-preview path on 24 pages.
+- **Design:** removed the animated red-to-pink gradient and bouncy
+  spring/overshoot easing used across buttons and cards (site-wide
+  `cubic-bezier` overshoot transitions), removed the cursor-following
+  "magnetic" button effect and floating particles, consolidated three
+  overlapping scroll-animation systems into one. Fixed brand red
+  (`#e63946` → `#d62839`) for WCAG AA contrast.
+  If you'd rather keep any of the removed effects, they're easy to
+  re-add — just ask.
+- **Accessibility:** fixed remaining low-contrast text/links, added a
+  skip-link, `<main>` landmark, visible keyboard focus styles, reduced-
+  motion support, heading-order fixes, keyboard access to the
+  horizontally-scrolling sliders, and a title on the embedded map.
+  Content (service cards, etc.) is no longer invisible when JavaScript
+  is off or hasn't loaded yet.
+- **Forms:** contact form now requires a phone number, has a honeypot
+  field against spam bots, and validates phone format client-side.
+- **SEO:** added the 5 newest blog posts to `sitemap.xml`, removed the
+  ignored `meta keywords` tag and a non-functional search action from
+  the structured data.
+- **Mobile:** fixed a horizontal-scroll bug on the contact page at very
+  narrow widths, and fixed button text getting clipped instead of
+  wrapping on small screens.
 
-3. Open `js/admin.js`
-4. Replace `YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE` with your Web App URL
+## Still worth doing (not code fixes — needs your input)
 
-### 4. Admin Password
-
-1. Open `js/admin.js`
-2. Change `ADMIN_PASSWORD` to your secure password (default: `admin123`)
-
-### 5. Contact Information
-
-Update contact details in:
-- `index.html` (footer)
-- `about.html` (footer)
-- `contact.html` (contact info panel)
-- `blog.html` (footer)
-- WhatsApp button links (all pages)
-
-### 6. Deployment
-
-#### Netlify
-1. Push code to GitHub
-2. Connect repository to Netlify
-3. Deploy automatically
-
-#### Vercel
-1. Install Vercel CLI: `npm i -g vercel`
-2. Run `vercel` in project directory
-3. Follow prompts
-
-## 📱 Pages Overview
-
-### Home Page (`index.html`)
-- Hero section with full-screen background
-- Services grid (6 services)
-- Team horizontal slider
-- CTA section
-- Client testimonials slider
-- Footer
-
-### About Us Page (`about.html`)
-- SEO-optimized content
-- Animated statistics counters
-- Services overview
-- Why choose us section
-- Team grid
-- Google Maps embed
-- CTA section
-
-### Contact Page (`contact.html`)
-- Animated contact form
-- Form validation
-- Google Sheets integration
-- Contact info panel with icons
-- Success message display
-
-### Blog Page (`blog.html`)
-- 8 SEO-optimized blog posts
-- Professional layout
-- H1, H2, H3 structure
-- Keywords: scrap car Qatar, damaged car Doha, etc.
-
-### Admin Panel (`admin.html`)
-- Password-protected login
-- Dashboard with statistics
-- Chart.js analytics
-- Message table with pagination
-- Search and filter functionality
-- Mark as Done / Delete actions
-- Email & WhatsApp reply buttons
-- CSV export
-
-## 🎨 Customization
-
-### Colors
-Edit CSS variables in `css/style.css`:
-```css
-:root {
-    --primary-color: #2563eb;
-    --secondary-color: #1e40af;
-    --accent-color: #f59e0b;
-    /* ... */
-}
-```
-
-### Images
-Replace placeholder images:
-- Hero background: Update in `index.html` hero section
-- Team images: Update `src` in team cards
-- Blog images: Update `src` in blog cards
-
-### Content
-- Update all text content in HTML files
-- Modify services descriptions
-- Update testimonials
-- Edit blog post content
-
-## 🔒 Security Notes
-
-1. **Admin Password**: Change the default password in `js/admin.js`
-2. **Google Apps Script**: Keep your Web App URL secure
-3. **CORS**: The script uses `no-cors` mode for form submissions. For production, consider proper CORS setup.
-
-## 📊 Google Sheets Structure
-
-The contact form creates rows with:
-- **Timestamp**: Auto-generated date/time
-- **Name**: User's name
-- **Email**: User's email
-- **Subject**: Selected service
-- **Message**: User's message
-- **Status**: "New" (default) or "Done"
-
-## 🐛 Troubleshooting
-
-### Contact form not submitting
-- Check Google Apps Script Web App URL is correct
-- Verify Web App is deployed and accessible
-- Check browser console for errors
-
-### Admin panel not loading messages
-- Verify Google Apps Script URL is correct
-- Check sheet name matches in script
-- Ensure Web App has proper permissions
-
-### Email notifications not working
-- Update `ADMIN_EMAIL` in Google Apps Script
-- Check Google Apps Script execution logs
-- Verify email quota not exceeded
-
-## 📝 License
-
-This project is ready for commercial use. Update contact information and customize as needed.
-
-## 🆘 Support
-
-For issues or questions:
-1. Check Google Apps Script execution logs
-2. Verify all URLs are correctly configured
-3. Test form submission in browser console
-4. Check network tab for API calls
-
----
-
-**Built with**: HTML5, CSS3, Vanilla JavaScript, Google Apps Script
-**Deployment Ready**: Netlify / Vercel compatible
-
+- Replace the Unsplash stock hero/card photography with real photos of
+  the workshop, vehicles and team.
+- Confirm the "15+ years", "800+ customers" and certification claims,
+  and the testimonials, are accurate — replace with real Google reviews
+  if possible.
+- Give the "20% off — Limited Time" offer a real end date, or drop the
+  "limited time" framing.
+- Decide whether `frontify7@gmail.com` should stay in the public footer
+  alongside the main business email.
+- Consider Arabic (`ar-QA`) versions of key pages for local search.
+- Claim/complete the Google Business Profile and link it from the site
+  (`sameAs`, `hasMap`).

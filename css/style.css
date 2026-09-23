@@ -13,16 +13,14 @@
 }
 
 :root {
-    --primary-color: #3b82f6;
-    --primary-gradient: linear-gradient(135deg, #e63946 0%, #c0392b 100%);
+    --primary-color: #1d4ed8;
+    --primary-gradient: linear-gradient(135deg, #d62839 0%, #c0392b 100%);
     --secondary-color: #1e40af;
     --accent-color: #f59e0b;
-    --accent-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
     --text-dark: #1f2937;
     --text-light: #6b7280;
     --bg-light: #f9fafb;
     --bg-white: #ffffff;
-    --bg-gradient: linear-gradient(135deg, #e63946 0%, #c0392b 50%, #f093fb 100%);
     --border-color: #e5e7eb;
     --success-color: #10b981;
     --error-color: #ef4444;
@@ -113,11 +111,14 @@ body > * {
 }
 
 /* Navigation */
-.navbar {
-    position: fixed;
+.site-header {
+    position: sticky;
     top: 0;
-    left: 0;
-    right: 0;
+    z-index: 1000;
+}
+
+.navbar {
+    position: relative;
     background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(20px) saturate(180%);
     -webkit-backdrop-filter: blur(20px) saturate(180%);
@@ -235,7 +236,7 @@ body > * {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(135deg, #e63946 0%, #c0392b 50%, #f093fb 100%);
+    background: linear-gradient(135deg, #7a1220 0%, #1f2937 100%);
     background-image: url('https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?w=1920');
     background-size: cover;
     background-position: center;
@@ -333,7 +334,7 @@ body > * {
     text-decoration: none;
     border-radius: 12px;
     font-weight: 600;
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition: background-color 0.25s ease, transform 0.2s ease, box-shadow 0.25s ease, border-color 0.25s ease;
     border: none;
     cursor: pointer;
     font-size: 0.95rem;
@@ -342,7 +343,8 @@ body > * {
     text-transform: uppercase;
     letter-spacing: 0.5px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    white-space: nowrap;
+    white-space: normal;
+    text-align: center;
 }
 
 .btn-primary {
@@ -417,7 +419,7 @@ section {
     padding: 2rem;
     border-radius: 16px;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     text-align: center;
     border: 1px solid rgba(255, 255, 255, 0.18);
     position: relative;
@@ -775,9 +777,7 @@ section {
 
 /* CTA Section */
 .cta {
-    background: linear-gradient(135deg, #e63946 0%, #c0392b 50%, #f093fb 100%);
-    background-size: 200% 200%;
-    animation: gradientShift 5s ease infinite;
+    background: linear-gradient(135deg, #d62839 0%, #7a1220 100%);
     color: white;
     text-align: center;
     position: relative;
@@ -977,11 +977,9 @@ section {
 
 /* Page Header */
 .page-header {
-    background: linear-gradient(135deg, #e63946 0%, #c0392b 50%, #f093fb 100%);
-    background-size: 200% 200%;
-    animation: gradientShift 5s ease infinite;
+    background: linear-gradient(135deg, #d62839 0%, #7a1220 100%);
     color: white;
-    padding: 120px 0 60px;
+    padding: 64px 0 56px;
     text-align: center;
     margin-top: 80px;
     position: relative;
@@ -1272,6 +1270,11 @@ section {
     grid-template-columns: 1fr 1fr;
     gap: 2.5rem;
     margin-top: 2rem;
+    min-width: 0;
+}
+
+.contact-wrapper > * {
+    min-width: 0;
 }
 
 .contact-form-container {
@@ -1600,8 +1603,7 @@ section {
     }
     
     .page-header {
-        padding: 100px 0 50px;
-        margin-top: 70px;
+        padding: 44px 0 40px;
     }
     
     section {
@@ -1901,16 +1903,17 @@ section {
 
 /* Promo Bar */
 .promo-bar {
-    background: #e63946;
+    background: #d62839;
     color: #ffffff;
     text-align: center;
-    padding: 10px 20px;
+    padding: 10px 44px 10px 20px;
     font-size: 14px;
     font-weight: 600;
     position: relative;
-    z-index: 9999;
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
+    row-gap: 4px;
     justify-content: center;
     gap: 12px;
 }
@@ -1927,15 +1930,28 @@ section {
     color: #fff;
     font-size: 18px;
     cursor: pointer;
-    margin-left: 16px;
     line-height: 1;
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+.promo-close:hover,
+.promo-close:focus-visible {
+    background: rgba(255, 255, 255, 0.18);
 }
 
 /* Offer Badge */
 .offer-badge {
     display: inline-block;
     background: #fff;
-    color: #e63946;
+    color: #d62839;
     font-weight: 800;
     font-size: 13px;
     padding: 6px 16px;
@@ -1947,7 +1963,7 @@ section {
 /* Breadcrumb */
 .breadcrumb {
     font-size: 13px;
-    color: #888;
+    color: #6b7280;
     padding: 10px 0;
     max-width: 1200px;
     margin: 0 auto;
@@ -1956,12 +1972,12 @@ section {
 }
 
 .breadcrumb a {
-    color: #aaa;
+    color: #4b5563;
     text-decoration: none;
 }
 
 .breadcrumb a:hover {
-    color: #e63946;
+    color: #d62839;
 }
 
 .breadcrumb-sep {
@@ -1969,7 +1985,7 @@ section {
 }
 
 .breadcrumb-current {
-    color: #888;
+    color: #6b7280;
 }
 
 /* Testimonial Avatar */
@@ -1990,7 +2006,8 @@ section {
 /* Read Guide Link */
 .read-guide-link {
     font-size: 13px;
-    color: #aaaaaa;
+    color: #4b5563;
+    font-weight: 600;
     display: block;
     margin-top: 8px;
     text-decoration: none;
@@ -2032,7 +2049,7 @@ section {
 }
 
 .citation-links a:hover {
-    color: #e63946;
+    color: #d62839;
     text-decoration: underline;
 }
 
@@ -2058,7 +2075,7 @@ section {
 }
 
 .badge-links a {
-    color: #888;
+    color: #4b5563;
     font-size: 13px;
     border: 1px solid #ddd;
     padding: 6px 14px;
@@ -2068,8 +2085,8 @@ section {
 }
 
 .badge-links a:hover {
-    color: #e63946;
-    border-color: #e63946;
+    color: #d62839;
+    border-color: #d62839;
 }
 
 /* Print Styles */
@@ -2091,4 +2108,69 @@ section {
     body {
         background: white;
     }
+}
+
+/* ---------------------------------------------------------------- */
+/* Accessibility additions                                          */
+/* ---------------------------------------------------------------- */
+
+/* Respect the visitor's OS-level motion preference */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* Visible keyboard focus ring (previously relied on the browser default only) */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+[tabindex]:focus-visible {
+    outline: 3px solid #1d4ed8;
+    outline-offset: 2px;
+    border-radius: 2px;
+}
+
+/* Skip-to-content link */
+.skip-link {
+    position: absolute;
+    left: 8px;
+    top: -60px;
+    background: #111827;
+    color: #fff;
+    padding: 10px 16px;
+    border-radius: 6px;
+    z-index: 10000;
+    transition: top 0.2s ease;
+    font-weight: 600;
+    text-decoration: none;
+}
+.skip-link:focus {
+    top: 8px;
+}
+
+/* Visually-hidden but screen-reader-accessible heading (keeps heading order intact) */
+.visually-hidden {
+    position: absolute !important;
+    width: 1px; height: 1px;
+    padding: 0; margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* Minimum touch target sizing for small nav/footer links */
+.footer-section a,
+.breadcrumb a {
+    display: inline-block;
+    padding: 4px 2px;
+    min-height: 24px;
 }

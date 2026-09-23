@@ -18,10 +18,18 @@ document.addEventListener('DOMContentLoaded', function() {
             const formData = {
                 name: document.getElementById('name').value.trim(),
                 email: document.getElementById('email').value.trim(),
-                phone: document.getElementById('phone').value.trim() || 'Not provided',
+                phone: document.getElementById('phone').value.trim(),
                 subject: document.getElementById('subject').value,
-                message: document.getElementById('message').value.trim()
+                message: document.getElementById('message').value.trim(),
+                website: document.getElementById('website') ? document.getElementById('website').value.trim() : ''
             };
+
+            // Honeypot caught a bot: pretend it worked, do nothing else
+            if (formData.website) {
+                contactForm.reset();
+                showSuccess(formData, null, buildWhatsAppUrl(formData));
+                return;
+            }
 
             if (!validateForm(formData)) {
                 return;
@@ -101,6 +109,13 @@ function validateForm(data) {
         isValid = false;
     } else {
         clearError('email');
+    }
+
+    if (!data.phone || data.phone.replace(/\D/g, '').length < 7) {
+        showError('phone', 'Please enter a valid phone number so we can call you back');
+        isValid = false;
+    } else {
+        clearError('phone');
     }
 
     if (!data.subject) {

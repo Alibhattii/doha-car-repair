@@ -226,8 +226,9 @@ document.addEventListener('DOMContentLoaded', function() {
     createSmoothScrollProgress();
     initBackToTop();
     initSmoothParallax();
-    initMagneticEffect();
     initPageTransitions();
+    // Magnetic cursor-follow buttons were removed — didn't fit a local repair
+    // shop's tone and added a mousemove listener per button for no real gain.
     
     // Ensure cards don't move on scroll
     document.querySelectorAll('.service-card, .team-card, .testimonial-card, .feature-card').forEach(card => {

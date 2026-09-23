@@ -3,6 +3,23 @@
 // Navigation, Mobile Menu, Scroll Animations
 // ============================================
 
+// Promo bar: dismiss + remember for the rest of this browser session
+function closePromoBar() {
+    const bar = document.getElementById('promoBar');
+    if (bar) {
+        bar.style.display = 'none';
+        try { sessionStorage.setItem('promoDismissed', '1'); } catch (e) {}
+    }
+}
+(function () {
+    try {
+        if (sessionStorage.getItem('promoDismissed') === '1') {
+            const bar = document.getElementById('promoBar');
+            if (bar) bar.style.display = 'none';
+        }
+    } catch (e) {}
+})();
+
 // Mobile Navigation Toggle
 document.addEventListener('DOMContentLoaded', function() {
     const hamburger = document.querySelector('.hamburger');
@@ -32,47 +49,28 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Scroll-based animations using IntersectionObserver
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    };
-
-    const observer = new IntersectionObserver(function(entries) {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('animated');
-            }
-        });
-    }, observerOptions);
-
-    // Observe all elements with data-animate attribute
-    const animateElements = document.querySelectorAll('[data-animate]');
-    animateElements.forEach(el => observer.observe(el));
+    // Note: scroll-reveal ([data-animate] -> .animated) is handled once,
+    // in smooth-animations.js, to avoid running two observers on the same elements.
 
     // Navbar scroll effect and Back to Top button
     const navbar = document.querySelector('.navbar');
     const backToTopBtn = document.getElementById('backToTop');
     
+    let navScrollRaf = null;
     window.addEventListener('scroll', function() {
-        const currentScroll = window.pageYOffset;
-        
-        // Navbar shadow on scroll
-        if (currentScroll > 100) {
-            navbar.classList.add('scrolled');
-        } else {
-            navbar.classList.remove('scrolled');
-        }
-        
-        // Back to top button visibility
-        if (backToTopBtn) {
-            if (currentScroll > 400) {
-                backToTopBtn.classList.add('visible');
-            } else {
-                backToTopBtn.classList.remove('visible');
-            }
-        }
-    });
+        if (navScrollRaf) return;
+        navScrollRaf = requestAnimationFrame(function() {
+            const currentScroll = window.pageYOffset;
+
+            // Navbar shadow on scroll
+            if (navbar) navbar.classList.toggle('scrolled', currentScroll > 100);
+
+            // Back to top button visibility
+            if (backToTopBtn) backToTopBtn.classList.toggle('visible', currentScroll > 400);
+
+            navScrollRaf = null;
+        });
+    }, { passive: true });
 
     // Back to top button click handler
     if (backToTopBtn) {

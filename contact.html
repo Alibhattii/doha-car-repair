@@ -1,13 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4440257502557093"
-         crossorigin="anonymous"></script>
-    <meta charset="UTF-8">
+<meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Contact Dohar Car Repair to book a service or request a free quote in Doha. Call +974 7222 3959, WhatsApp, or send the form — we respond quickly." />
-    <meta name="keywords" content="contact Dohar Car Repair, book car service Doha, free quote Doha Qatar, WhatsApp car workshop Doha, car repair booking Qatar" />
-    <meta name="author" content="Dohar Car Repair">
+<meta name="author" content="Dohar Car Repair">
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
     <meta name="googlebot" content="index, follow">
     <link rel="canonical" href="https://doharcarrepairqa.com/contact.html" />
@@ -18,12 +15,12 @@
     <meta property="og:description" content="Contact Dohar Car Repair to book a service or request a free quote in Doha. Call +974 7222 3959, WhatsApp, or send the form — we respond quickly." />
     <meta property="og:url" content="https://doharcarrepairqa.com/contact.html" />
     <meta property="og:type" content="website" />
-    <meta property="og:image" content="https://doharcarrepairqa.com/images/og-image.jpg" />
+    <meta property="og:image" content="https://doharcarrepairqa.com/Image/carser1.webp" />
     <meta property="og:site_name" content="Dohar Car Repair" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Contact Dohar Car Repair | Book Service or Free Quote in Doha" />
     <meta name="twitter:description" content="Book a service or request a free quote in Doha. Call +974 7222 3959, WhatsApp, or use our contact form." />
-    <meta name="twitter:image" content="https://doharcarrepairqa.com/images/og-image.jpg" />
+    <meta name="twitter:image" content="https://doharcarrepairqa.com/Image/carser1.webp" />
     
     <!-- Geo Tags -->
     <meta name="geo.region" content="QA-DA">
@@ -34,8 +31,8 @@
     <title>Contact Dohar Car Repair | Book Service or Free Quote in Doha</title>
     
     <!-- Theme Color for Mobile Browsers -->
-    <meta name="theme-color" content="#e63946">
-    <meta name="msapplication-navbutton-color" content="#e63946">
+    <meta name="theme-color" content="#d62839">
+    <meta name="msapplication-navbutton-color" content="#d62839">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-capable" content="yes">
     
@@ -80,9 +77,12 @@
     </script>
 </head>
 <body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <header class="site-header">
     <div class="promo-bar" id="promoBar">
         <span>🔧 Limited Time Offer: <strong>20% OFF</strong> on All Car Repair Services in Doha! &nbsp;|&nbsp; Call Now: <a href="tel:+97472223959">+974 7222 3959</a> &nbsp;|&nbsp; <a href="https://wa.me/97472223959?text=Hi%2C%20I%20want%20to%20claim%20the%2020%25%20discount%20offer!" target="_blank">Claim on WhatsApp →</a></span>
-        <button class="promo-close" onclick="document.getElementById('promoBar').style.display='none'" aria-label="Close">✕</button>
+        <button class="promo-close" onclick="closePromoBar()" aria-label="Close">✕</button>
     </div>
     <!-- Navigation -->
     <nav class="navbar">
@@ -105,9 +105,11 @@
             </div>
         </div>
     </nav>
+    </header>
+    <main id="main-content">
 
     <nav class="breadcrumb" aria-label="Breadcrumb">
-        <a href="/index.html">Home</a>
+        <a href="/">Home</a>
         <span class="breadcrumb-sep">›</span>
         <span class="breadcrumb-current">Contact</span>
     </nav>
@@ -140,9 +142,14 @@
                             <span class="error-message"></span>
                         </div>
                         <div class="form-group">
-                            <label for="phone">Phone Number</label>
-                            <input type="tel" id="phone" name="phone" placeholder="0097472223959">
+                            <label for="phone">Phone Number *</label>
+                            <input type="tel" id="phone" name="phone" required placeholder="0097472223959">
                             <span class="error-message"></span>
+                        </div>
+                        <!-- Honeypot: hidden from real visitors via CSS, bots usually fill every field -->
+                        <div class="form-group" style="position:absolute; left:-9999px; top:-9999px;" aria-hidden="true">
+                            <label for="website">Leave this field empty</label>
+                            <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
                         </div>
                         <div class="form-group">
                             <label for="subject">Service Needed *</label>
@@ -247,6 +254,8 @@
     </section>
 
     <!-- Footer -->
+    </main>
+
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
@@ -291,6 +300,7 @@
         </div>
     </footer>
 
+    <aside role="complementary" aria-label="Quick contact actions">
     <!-- Back to Top Button -->
     <button id="backToTop" class="back-to-top" aria-label="Back to top">
         <i class="fas fa-arrow-up"></i>
@@ -300,7 +310,8 @@
     <a href="https://wa.me/97472223959?text=Hello%20Dohar%20Car%20Repair,%20I%20need%20your%20car%20repair%20service" class="whatsapp-float" target="_blank" aria-label="Contact Dohar Car Repair on WhatsApp">
         <i class="fab fa-whatsapp"></i>
     </a>
-    
+    </aside>
+
     <script src="js/main.js" defer></script>
     <script src="js/contact.js" defer></script>
     <script src="js/animations.js" defer></script>
