@@ -1,0 +1,39 @@
+# 301 Permanent Redirects for Dohar Car Repair
+# Legacy static HTML pages to clean URLs (Netlify / Cloudflare Pages / Static Hosting format)
+
+/index.html                           /                               301
+/about.html                           /about                          301
+/contact.html                         /contact                        301
+/blog.html                            /blog                           301
+/privacy.html                         /privacy                        301
+/terms.html                           /terms                          301
+
+# Blog post clean URL 301 redirects
+/blog/car-repair-service-doha-qatar.html          /blog/car-repair-service-doha-qatar          301
+/blog/engine-repair-doha-qatar.html              /blog/engine-repair-doha-qatar              301
+/blog/car-scrap-qatar.html                       /blog/car-scrap-qatar                       301
+/blog/buy-accident-car-qatar.html                /blog/buy-accident-car-qatar                301
+/blog/brake-repair-doha-qatar.html               /blog/brake-repair-doha-qatar               301
+/blog/car-ac-repair-doha-qatar.html              /blog/car-ac-repair-doha-qatar              301
+/blog/car-ac-not-cooling-doha.html               /blog/car-ac-not-cooling-doha               301
+/blog/car-battery-replacement-doha-qatar.html    /blog/car-battery-replacement-doha-qatar    301
+/blog/car-battery-problems-qatar.html            /blog/car-battery-problems-qatar            301
+/blog/steering-box-repair-doha-qatar.html        /blog/steering-box-repair-doha-qatar        301
+/blog/front-windshield-installation-doha-qatar.html /blog/front-windshield-installation-doha-qatar 301
+/blog/body-denting-doha-qatar.html               /blog/body-denting-doha-qatar               301
+/blog/car-painting-doha-qatar.html               /blog/car-painting-doha-qatar               301
+/blog/suspension-repair-doha-qatar.html          /blog/suspension-repair-doha-qatar          301
+/blog/car-suspension-noise-doha.html             /blog/car-suspension-noise-doha             301
+/blog/computer-diagnostics-doha-qatar.html       /blog/computer-diagnostics-doha-qatar       301
+/blog/car-overheating-doha.html                  /blog/car-overheating-doha                  301
+/blog/car-oil-change-doha-qatar.html             /blog/car-oil-change-doha-qatar             301
+/blog/best-car-garage-doha-qatar.html            /blog/best-car-garage-doha-qatar            301
+/blog/how-to-sell-scrap-car-qatar.html           /blog/how-to-sell-scrap-car-qatar           301
+/blog/transmission-repair-doha-qatar.html        /blog/transmission-repair-doha-qatar        301
+/blog/wheel-alignment-doha-qatar.html            /blog/wheel-alignment-doha-qatar            301
+/blog/clutch-repair-doha-qatar.html              /blog/clutch-repair-doha-qatar              301
+/blog/radiator-repair-doha-qatar.html            /blog/radiator-repair-doha-qatar            301
+/blog/timing-belt-replacement-doha-qatar.html    /blog/timing-belt-replacement-doha-qatar    301
+
+# SPA fallback
+/*                                    /index.html                     200

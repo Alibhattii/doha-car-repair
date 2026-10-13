@@ -1,0 +1,28 @@
+{
+  "name": "Dohar Car Repair",
+  "short_name": "Dohar Car",
+  "description": "Professional car repair, scrap car buying, and 24/7 emergency automotive services in Doha, Qatar.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#1f2937",
+  "theme_color": "#d62839",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/Favicon-logo.webp",
+      "sizes": "192x192",
+      "type": "image/webp",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/Favicon-logo.webp",
+      "sizes": "512x512",
+      "type": "image/webp",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["automotive", "business"],
+  "lang": "en-QA",
+  "dir": "ltr",
+  "scope": "/"
+}
