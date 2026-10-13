@@ -1,0 +1,258 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ===== BASE STYLES ===== */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  body {
+    @apply font-body text-gray-800 bg-white;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display font-bold leading-tight;
+  }
+
+  a {
+    @apply transition-colors duration-200;
+  }
+
+  img {
+    @apply max-w-full h-auto;
+  }
+
+  /* Focus styles for accessibility */
+  *:focus-visible {
+    @apply outline-2 outline-offset-2 outline-primary rounded-sm;
+  }
+}
+
+/* ===== COMPONENT STYLES ===== */
+@layer components {
+  /* Skip link */
+  .skip-link {
+    @apply absolute -top-full left-4 z-[9999] px-4 py-2 bg-primary text-white font-semibold rounded-b-md;
+    @apply focus:top-0 transition-all;
+  }
+
+  /* Containers */
+  .container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  /* Section spacing */
+  .section-pad {
+    @apply py-16 lg:py-24;
+  }
+
+  /* Section headings */
+  .section-title {
+    @apply text-3xl md:text-4xl font-display font-bold text-charcoal text-center;
+  }
+
+  .section-subtitle {
+    @apply text-lg text-gray-500 text-center max-w-3xl mx-auto mt-4;
+  }
+
+  /* Buttons */
+  .btn-primary {
+    @apply inline-flex items-center gap-2 px-6 py-3 bg-primary hover:bg-primary-dark text-white font-semibold rounded-xl shadow-red transition-all duration-200 hover:shadow-[0_0_20px_rgba(214,40,57,0.6)] hover:scale-[1.02] active:scale-[0.98] active:brightness-90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center gap-2 px-6 py-3 bg-white hover:bg-gray-50 text-charcoal font-semibold rounded-xl border-2 border-white/30 transition-all duration-300 hover:-translate-y-0.5;
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center gap-2 px-6 py-3 bg-transparent border-2 border-primary text-primary hover:bg-primary hover:text-white font-semibold rounded-xl transition-all duration-300;
+  }
+
+  /* Cards */
+  .card {
+    @apply bg-white rounded-2xl shadow-card hover:shadow-card-hover transition-all duration-300;
+  }
+
+  /* Badges */
+  .badge-red {
+    @apply inline-block px-3 py-1 bg-primary text-white text-sm font-semibold rounded-full;
+  }
+
+  /* Breadcrumb */
+  .breadcrumb-nav {
+    @apply py-3 px-4 bg-gray-50 border-b border-gray-100;
+  }
+
+  .breadcrumb-nav ol {
+    @apply flex flex-wrap items-center gap-2 text-sm text-gray-500 container;
+  }
+
+  .breadcrumb-nav a {
+    @apply text-primary hover:underline;
+  }
+
+  .breadcrumb-sep {
+    @apply text-gray-300;
+  }
+
+  /* Floating buttons */
+  .float-btn {
+    @apply fixed z-50 flex items-center justify-center rounded-full shadow-lg transition-all duration-300 hover:scale-110;
+  }
+
+  /* Form styles */
+  .form-label {
+    @apply block text-sm font-semibold text-charcoal mb-1.5;
+  }
+
+  .form-input {
+    @apply w-full px-4 py-3 border border-gray-200 rounded-xl text-charcoal placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-colors;
+  }
+
+  .form-error {
+    @apply text-xs text-red-500 mt-1;
+  }
+
+  /* FAQ accordion */
+  .faq-item {
+    @apply bg-white rounded-xl overflow-hidden shadow-card;
+  }
+
+  /* Blog article prose */
+  .blog-prose h2 {
+    @apply text-2xl font-display font-bold text-charcoal mt-8 mb-3 pb-2 border-b-4 border-primary/20;
+  }
+
+  .blog-prose h3 {
+    @apply text-xl font-display font-semibold text-charcoal mt-6 mb-2;
+  }
+
+  .blog-prose p {
+    @apply text-gray-600 leading-relaxed mb-4;
+  }
+
+  .blog-prose ul {
+    @apply list-disc list-outside pl-5 mb-4 space-y-1;
+  }
+
+  .blog-prose ol {
+    @apply list-decimal list-outside pl-5 mb-4 space-y-1;
+  }
+
+  .blog-prose li {
+    @apply text-gray-600 leading-relaxed;
+  }
+
+  .blog-prose strong {
+    @apply font-semibold text-charcoal;
+  }
+
+  .blog-prose a {
+    @apply text-primary hover:underline font-medium;
+  }
+
+  .blog-prose blockquote {
+    @apply border-l-4 border-primary bg-red-50 pl-4 py-2 rounded-r-xl italic text-charcoal my-4;
+  }
+
+  .blog-prose .info-box {
+    @apply bg-red-gradient text-white p-5 rounded-xl my-5;
+  }
+
+  .blog-prose .info-box p {
+    @apply text-white/95 mb-0;
+  }
+}
+
+/* ===== UTILITY OVERRIDES ===== */
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .animate-delay-1 { animation-delay: 100ms; }
+  .animate-delay-2 { animation-delay: 200ms; }
+  .animate-delay-3 { animation-delay: 300ms; }
+  .animate-delay-4 { animation-delay: 400ms; }
+
+  /* Hero overlay */
+  .hero-overlay {
+    @apply absolute inset-0 bg-hero-gradient;
+  }
+
+  /* Red gradient text */
+  .text-gradient-red {
+    background: linear-gradient(135deg, #d62839, #ff6b6b);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Visually hidden (accessibility) */
+  .visually-hidden {
+    @apply absolute w-px h-px p-0 -m-px overflow-hidden whitespace-nowrap border-0;
+    clip: rect(0, 0, 0, 0);
+  }
+
+  /* Steps counter list */
+  .steps-list {
+    counter-reset: step;
+    list-style: none;
+    @apply pl-0 space-y-4;
+  }
+
+  .steps-list li {
+    counter-increment: step;
+    @apply relative pl-14;
+  }
+
+  .steps-list li::before {
+    content: counter(step);
+    @apply absolute left-0 top-0 w-10 h-10 bg-red-gradient text-white rounded-full flex items-center justify-center font-bold text-sm;
+  }
+
+  /* Looping road dashes */
+  .road-dash-track {
+    background: repeating-linear-gradient(
+      to right,
+      #fef08a 0px,
+      #fef08a 28px,
+      transparent 28px,
+      transparent 56px
+    );
+    animation: roadScroll 1.6s linear infinite;
+  }
+
+  @keyframes roadScroll {
+    0% { transform: translateY(-50%) translateX(0); }
+    100% { transform: translateY(-50%) translateX(-56px); }
+  }
+
+  /* Idle gentle pulse for floating WhatsApp button */
+  .animate-idle-pulse {
+    animation: gentlePulse 4.5s ease-in-out infinite;
+  }
+
+  @keyframes gentlePulse {
+    0%, 80%, 100% { transform: scale(1); box-shadow: 0 10px 15px -3px rgba(0,0,0,0.2); }
+    85% { transform: scale(1.08); box-shadow: 0 0 25px rgba(37,211,102,0.6); }
+    92% { transform: scale(1.02); }
+  }
+}
