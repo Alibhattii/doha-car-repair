@@ -14,19 +14,19 @@
   "index.html": [],
   "node_modules/@remix-run/router/dist/router.js": [],
   "node_modules/gsap/CSSPlugin.js": [
-    "/assets/index-a9woYdh8.js"
+    "/doha-car-repair/assets/index-a9woYdh8.js"
   ],
   "node_modules/gsap/Observer.js": [
-    "/assets/ScrollTrigger-88WqrurJ.js"
+    "/doha-car-repair/assets/ScrollTrigger-88WqrurJ.js"
   ],
   "node_modules/gsap/ScrollTrigger.js": [
-    "/assets/ScrollTrigger-88WqrurJ.js"
+    "/doha-car-repair/assets/ScrollTrigger-88WqrurJ.js"
   ],
   "node_modules/gsap/gsap-core.js": [
-    "/assets/index-a9woYdh8.js"
+    "/doha-car-repair/assets/index-a9woYdh8.js"
   ],
   "node_modules/gsap/index.js": [
-    "/assets/index-a9woYdh8.js"
+    "/doha-car-repair/assets/index-a9woYdh8.js"
   ],
   "node_modules/invariant/browser.js": [],
   "node_modules/prop-types/factoryWithThrowingShims.js": [],
@@ -50,103 +50,103 @@
   "node_modules/vite-react-ssg/dist/shared/vite-react-ssg.9d005d5e.mjs": [],
   "node_modules/vite-react-ssg/node_modules/react-helmet-async/lib/index.module.js": [],
   "src/components/home/AreasWeServe.jsx": [
-    "/assets/HomePage-Drnem2E1.js"
+    "/doha-car-repair/assets/HomePage-BF5hd9DY.js"
   ],
   "src/components/home/BrandsSection.jsx": [
-    "/assets/HomePage-Drnem2E1.js"
+    "/doha-car-repair/assets/HomePage-BF5hd9DY.js"
   ],
   "src/components/home/CTASection.jsx": [
-    "/assets/CTASection-BAeAdiaT.js"
+    "/doha-car-repair/assets/CTASection-BWUTVjVU.js"
   ],
   "src/components/home/FAQSection.jsx": [
-    "/assets/HomePage-Drnem2E1.js"
+    "/doha-car-repair/assets/HomePage-BF5hd9DY.js"
   ],
   "src/components/home/Hero.jsx": [
-    "/assets/HomePage-Drnem2E1.js"
+    "/doha-car-repair/assets/HomePage-BF5hd9DY.js"
   ],
   "src/components/home/ScrapProcess.jsx": [
-    "/assets/HomePage-Drnem2E1.js"
+    "/doha-car-repair/assets/HomePage-BF5hd9DY.js"
   ],
   "src/components/home/ServicesGrid.jsx": [
-    "/assets/HomePage-Drnem2E1.js"
+    "/doha-car-repair/assets/HomePage-BF5hd9DY.js"
   ],
   "src/components/home/Testimonials.jsx": [
-    "/assets/Testimonials-BADl94yf.js"
+    "/doha-car-repair/assets/Testimonials-De82f3bO.js"
   ],
   "src/components/home/WhyChooseUs.jsx": [
-    "/assets/HomePage-Drnem2E1.js"
+    "/doha-car-repair/assets/HomePage-BF5hd9DY.js"
   ],
   "src/components/layout/FloatingButtons.jsx": [],
   "src/components/layout/Footer.jsx": [],
   "src/components/layout/Header.jsx": [],
   "src/components/motion/AutomotiveTreadDivider.jsx": [
-    "/assets/HomePage-Drnem2E1.js"
+    "/doha-car-repair/assets/HomePage-BF5hd9DY.js"
   ],
   "src/components/motion/DialGaugeStat.jsx": [
-    "/assets/AboutPage-BX3x6o24.js"
+    "/doha-car-repair/assets/AboutPage-DJqtvpJK.js"
   ],
   "src/components/motion/GarageShutterTransition.jsx": [],
   "src/components/motion/HeroRoadScene.jsx": [
-    "/assets/HomePage-Drnem2E1.js"
+    "/doha-car-repair/assets/HomePage-BF5hd9DY.js"
   ],
   "src/components/motion/ScrapProcessRoad.jsx": [
-    "/assets/HomePage-Drnem2E1.js"
+    "/doha-car-repair/assets/HomePage-BF5hd9DY.js"
   ],
   "src/components/motion/ScrollOdometerProgress.jsx": [],
   "src/components/motion/ServiceIconMotion.jsx": [
-    "/assets/HomePage-Drnem2E1.js"
+    "/doha-car-repair/assets/HomePage-BF5hd9DY.js"
   ],
   "src/components/seo/PageMeta.jsx": [
-    "/assets/PageMeta-BO8LfuDb.js"
+    "/doha-car-repair/assets/PageMeta-BGJ4VsjT.js"
   ],
   "src/components/seo/helmet.js": [],
   "src/components/ui/Breadcrumb.jsx": [
-    "/assets/Breadcrumb-B8Erq3Hx.js"
+    "/doha-car-repair/assets/Breadcrumb-B3OOYNuS.js"
   ],
   "src/data/blogContent.js": [
-    "/assets/BlogPostPage-1qavUiRN.js"
+    "/doha-car-repair/assets/BlogPostPage-EU72rvwm.js"
   ],
   "src/data/blogPosts.js": [
-    "/assets/blogPosts-STvyx40T.js"
+    "/doha-car-repair/assets/blogPosts-STvyx40T.js"
   ],
   "src/data/business.js": [],
   "src/data/faqs.js": [
-    "/assets/HomePage-Drnem2E1.js"
+    "/doha-car-repair/assets/HomePage-BF5hd9DY.js"
   ],
   "src/data/services.js": [],
   "src/data/testimonials.js": [
-    "/assets/Testimonials-BADl94yf.js"
+    "/doha-car-repair/assets/Testimonials-De82f3bO.js"
   ],
   "src/index.css": [],
   "src/main.jsx": [],
   "src/motion/config.js": [
-    "/assets/Testimonials-BADl94yf.js"
+    "/doha-car-repair/assets/Testimonials-De82f3bO.js"
   ],
   "src/pages/AboutPage.jsx": [
-    "/assets/AboutPage-BX3x6o24.js"
+    "/doha-car-repair/assets/AboutPage-DJqtvpJK.js"
   ],
   "src/pages/BlogListPage.jsx": [
-    "/assets/BlogListPage-BivlvK9A.js"
+    "/doha-car-repair/assets/BlogListPage-B1CYGQr5.js"
   ],
   "src/pages/BlogPostPage.jsx": [
-    "/assets/BlogPostPage-1qavUiRN.js"
+    "/doha-car-repair/assets/BlogPostPage-EU72rvwm.js"
   ],
   "src/pages/ContactPage.jsx": [
-    "/assets/ContactPage-BcOnXHiV.js"
+    "/doha-car-repair/assets/ContactPage-DC0yG-LN.js"
   ],
   "src/pages/HomePage.jsx": [
-    "/assets/HomePage-Drnem2E1.js"
+    "/doha-car-repair/assets/HomePage-BF5hd9DY.js"
   ],
   "src/pages/NotFoundPage.jsx": [
-    "/assets/NotFoundPage-ClfCUugi.js"
+    "/doha-car-repair/assets/NotFoundPage-Bgm8i3BV.js"
   ],
   "src/pages/PrivacyPage.jsx": [
-    "/assets/PrivacyPage-CiScCPMl.js"
+    "/doha-car-repair/assets/PrivacyPage-DcW_txJY.js"
   ],
   "src/pages/ServicePage.jsx": [
-    "/assets/ServicePage-f3ypWaTv.js"
+    "/doha-car-repair/assets/ServicePage-BpKpJEZN.js"
   ],
   "src/pages/TermsPage.jsx": [
-    "/assets/TermsPage-CewJayrI.js"
+    "/doha-car-repair/assets/TermsPage-uF7uPVum.js"
   ]
 }
